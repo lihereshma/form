@@ -4,15 +4,12 @@
 document.getElementById("submit").addEventListener("click",checkEmpty);
 document.getElementById("cancel").addEventListener("click",clearBox);
 
-
-
-
 // check whether the fieds are empty or not
+ var gData;
 function checkEmpty(e){
     e.preventDefault();
-
     debugger;
-    var gData;
+
     var gen_checked = document.querySelector('input[name = "gender"]:checked');
     if(gen_checked !== null){    
         gData = gen_checked.value ;
@@ -22,7 +19,7 @@ function checkEmpty(e){
         alert('Please Enter Your First Name');
     }
     else if(lname.value == ""){
-        alert('Please Enter Your First Name');
+        alert('Please Enter Your Last Name');
     }
     else if(gData == null){
         alert('Select Gender');
@@ -35,6 +32,7 @@ function checkEmpty(e){
     }
     else{
         alert('Thank You');
+        store();
         clearBox();
     }
 }
@@ -44,9 +42,15 @@ function clearBox(){
     document.getElementById('form_submission').reset();
 }
 
-var userData = {
-    f_name: document.querySelector('#fname').value,
-    l_name: document.querySelector('#lname').value,
-    gender: gen_checked,
-    address: document.querySelector('#address').value   
-};
+function store(){
+    debugger;
+    var userArray = [];
+    var userData = {
+        f_name: document.querySelector('#fname').value,
+        l_name: document.querySelector('#lname').value,
+        gender: gData,
+        address: document.querySelector('#address').value   
+    };
+    userArray.push(userData);
+}
+
