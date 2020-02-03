@@ -32,14 +32,14 @@
           </div>
           <div class="gender">
             <label>gender:</label>
-            <input type="radio" id="male">
+            <input type="radio" id="male" name="gender" value="male">
             <label>male</label>
-            <input type="radio" id="female">
+            <input type="radio" id="female" name="gender" value="female">
             <label>female</label>
           </div>
           <div class="address">
             <label>address:</label>
-            <textarea name="address" id="address" cols="30" rows="10"></textarea>
+            <textarea name="address" id="address" cols="30" rows="4"></textarea>
           </div>
           <div class="t_and_c">
             <input type="checkbox" id="tc">
@@ -51,12 +51,14 @@
           </div>
         </form>
         <div class="table">
-          <span>name</span>
-          <span>last name</span>
-          <span>gender</span>
-          <span>address</span>
-          <span>edit</span>
-          <span>delete</span>
+          <ul id="list">
+            <li>Name</li>
+            <li>Last Name</li>
+            <li>Gender</li>
+            <li>Address</li>
+            <li>Edit</li>
+            <li>Delete</li>
+          </ul>
         </div>
       </div>
     </main>
