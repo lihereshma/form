@@ -34,17 +34,16 @@ function checkEmpty(e){
         alert('Thank You');
         store();
         clearBox();
+        display();
     }
 }
 
 // reset form function
-function clearBox(){
-    document.getElementById('form_submission').reset();
-}
 
+var userArray = [];
 function store(){
-    debugger;
-    var userArray = [];
+    debugger; 
+    console.log(userArray.length);
     var userData = {
         f_name: document.querySelector('#fname').value,
         l_name: document.querySelector('#lname').value,
@@ -52,5 +51,44 @@ function store(){
         address: document.querySelector('#address').value   
     };
     userArray.push(userData);
+    console.log(userArray);
+    console.log(userArray.length);
 }
+
+function clearBox(){
+    document.getElementById('form_submission').reset();
+}
+
+function display() {
+    debugger;
+    console.log(userArray.length);
+    var ulNode = document.createElement("ul");
+    for (var i in userArray[userArray.length-1]){
+        var liNode = document.createElement("li");
+        liNode.textContent = (userArray[userArray.length-1][i]);
+        ulNode.appendChild(liNode);
+    }
+
+    var editButton = document.createElement("button")
+    editButton.innerHTML = "Edit";
+    ulNode.append(editButton);
+    editButton.addEventListener("click",editLi);
+
+    var deleteButton = document.createElement("button")
+    deleteButton.innerHTML = "Delete";
+    ulNode.append(deleteButton);
+    deleteButton.addEventListener("click",deleteLi);
+
+    var user = document.querySelector('.table');
+    user.appendChild(ulNode);
+
+    function editLi(){
+       var items = document.querySelectorAll('#list li');
+    }
+
+    function deleteLi(){
+        user.removeChild(ulNode);
+    }
+}
+
 
