@@ -62,33 +62,44 @@ function clearBox(){
 function display() {
     debugger;
     console.log(userArray.length);
-    var ulNode = document.createElement("ul");
+    var ulRow = document.createElement("ul");
     for (var i in userArray[userArray.length-1]){
-        var liNode = document.createElement("li");
-        liNode.textContent = (userArray[userArray.length-1][i]);
-        ulNode.appendChild(liNode);
+        var liData = document.createElement("li");
+        liData.textContent = (userArray[userArray.length-1][i]);
+        ulRow.appendChild(liData);
     }
 
     var editButton = document.createElement("button")
     editButton.innerHTML = "Edit";
-    ulNode.append(editButton);
+    ulRow.append(editButton);
     editButton.addEventListener("click",editLi);
 
     var deleteButton = document.createElement("button")
     deleteButton.innerHTML = "Delete";
-    ulNode.append(deleteButton);
+    ulRow.append(deleteButton);
     deleteButton.addEventListener("click",deleteLi);
 
     var user = document.querySelector('.table');
-    user.appendChild(ulNode);
+    user.appendChild(ulRow);
 
     function editLi(){
-       var items = document.querySelectorAll('#list li');
+        debugger;
+        var temp = [];
+        for (var i in userArray[userArray.length-1]){
+            temp.push(userArray[userArray.length-1][i]);           
+        }
+        fname.value = temp[0];
+        lname.value = temp[1];
+        if(temp[2] == "male"){
+            document.querySelector("#male").checked = true;
+        }
+        else{
+            document.querySelector("#female").checked = true; 
+        }
+        address.value = temp[3];        
     }
 
     function deleteLi(){
-        user.removeChild(ulNode);
+        user.removeChild(ulRow);
     }
 }
-
-
