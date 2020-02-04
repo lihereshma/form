@@ -25,7 +25,6 @@ function checkEmpty(e){
     }
 }
 
-// reset form function
 var userArray = [];
 function store(){ 
     console.log(userArray.length);
@@ -40,31 +39,37 @@ function store(){
     console.log(userArray.length);
 }
 
+// reset form function
 function clearBox(){
     document.getElementById('form_submission').reset();
 }
 
 function display() {
+    debugger;
     console.log(userArray.length);
     var ulRow = document.createElement("ul");
     for (var i in userArray[userArray.length-1]){
         var liData = document.createElement("li");
+        var n = Object.keys(userArray);
         liData.textContent = (userArray[userArray.length-1][i]);
         ulRow.appendChild(liData);
     }
-
+    var s = n.length-1;
     var eLi = document.createElement("li")
     eLi.innerHTML = "<a href='#FIXME'>Edit</a>";
+    eLi.setAttribute('id',n[s]);
     eLi.addEventListener("click",editLi);
     ulRow.append(eLi);
 
     var dLi = document.createElement("li");
     dLi.innerHTML = "<a href='#FIXME'>Delete</a>";
+    eLi.setAttribute('id',n[s]);
     dLi.addEventListener("click",deleteLi);
     ulRow.append(dLi);
 
     var user = document.querySelector('.table');
-    user.appendChild(ulRow);    
+    user.appendChild(ulRow);
+    s++;    
 } 
 
 //delete function
@@ -77,11 +82,20 @@ function deleteLi(){
 //edit function
 function editLi(){
     debugger;
-    var temp = [];
-    for (var i in userArray[userArray.length-1]){
-        temp.push(userArray[this][i]);           
-    }
+    // for (var i in userArray[userArray.length-1]){
+    //     temp.push(userArray[0][i]);
+    // }
 
+    
+    var temp = [];
+    var userTable = document.querySelectorAll('.table ul');
+    for (var j = 0 ; j<userTable.length ; j++) {
+        var pakad = this.id;
+    }
+    for (var i in userArray[userArray.length-1]){
+        temp.push(userArray[pakad][i]);
+    }
+    
     fname.value = temp[0];
     lname.value = temp[1];
     if(temp[2] == "male"){
@@ -90,6 +104,5 @@ function editLi(){
     else{
         document.querySelector("#female").checked = true;  
     }
-    address.value = temp[3];  
-    
+    address.value = temp[3];     
 }   
