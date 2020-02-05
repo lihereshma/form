@@ -68,9 +68,11 @@ function display() {
     ulRow.append(dLi);
 
     var user = document.querySelector('.table');
+
     user.appendChild(ulRow);
-    s++;    
+    s++; 
 } 
+
 
 //delete function
 function deleteLi(){   
@@ -85,24 +87,30 @@ function editLi(){
     // for (var i in userArray[userArray.length-1]){
     //     temp.push(userArray[0][i]);
     // }
-
     
     var temp = [];
     var userTable = document.querySelectorAll('.table ul');
     for (var j = 0 ; j<userTable.length ; j++) {
-        var pakad = this.id;
+        var liId = this.id;
     }
     for (var i in userArray[userArray.length-1]){
-        temp.push(userArray[pakad][i]);
+        temp.push(userArray[liId][i]);
     }
+
+    // fname.value = temp[0];
+    // lname.value = temp["1"];
+    // if(temp[2] == "male"){
+    //     document.querySelector("#male").checked = true;
+    // }
+    // else{
+    //     document.querySelector("#female").checked = true;  
+    // }
+    // address.value = temp["3"]; 
+
     
-    fname.value = temp[0];
-    lname.value = temp[1];
-    if(temp[2] == "male"){
-        document.querySelector("#male").checked = true;
-    }
-    else{
-        document.querySelector("#female").checked = true;  
-    }
-    address.value = temp[3];     
+    id = Object.keys(userArray[liId]);
+        this.parentElement.firstChild.innerHTML = document.querySelector('#fname').value;
+        this.parentElement.childNodes[1].innerHTML = document.querySelector('#lname').value;
+        //this.parentElement.childNodes[2].innerHTML = document.querySelector('input[name = "gender"]').value;
+        this.parentElement.childNodes[3].innerHTML = document.querySelector('#address').value;
 }   
